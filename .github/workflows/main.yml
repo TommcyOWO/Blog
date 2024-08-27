@@ -1,0 +1,21 @@
+name: Clone Library
+
+on:
+  schedule:
+    - cron: '0 0 */3 * *'
+
+jobs:
+  clone:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Current Repository
+      uses: actions/checkout@v2
+      
+    - name: Remove All Code
+      run: |
+        rm -rf *
+
+    - name: Clone New Library
+      run: |
+        git clone https://codeberg.org/TommcyOWO/Blog.git
